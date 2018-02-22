@@ -3,16 +3,33 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Order</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-list style="margin-bottom:2px">
+    <ion-item *ngFor="let item of products;let i = indes">
+      <ion-label style="width:50%">{{item.name}}</ion-label>
+      <ion-label style="width:20%">{{item.price}}</ion-label>
+      <ion-input style="width:30%" [(ngModel)]="item.qty" placeholder="Qty" (ionChange)='calcTotal()'></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-item>
+    <ion-label style="font-weight:bold;width:60%">Total Price:</ion-label>
+    <ion-label style="width:20%">{{totalPrice}}</ion-label>
+  </ion-item>
+  <br>
+  <br>
+  <ion-item>
+    <ion-label>Address:</ion-label>
+    <ion-input placeholder="Input Address" [(ngModel)]="address" (ionChange)='calcTotal()'></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>OrderDate:</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" min="2016" max="2020-10-31" [(ngModel)]="orderDate"></ion-datetime>
+  </ion-item>
+  <div padding>
+    <button [disabled]="!isOrder" ion-button class="signup gradient-bg" block (click)="doOrder()">Place Order</button>
+  </div>
 </ion-content>
