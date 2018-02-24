@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { SignupPage } from '../pages/signup/signup';
 import { ForgotPage } from '../pages/forgot/forgot';
+import { SplashPage } from '../pages/splash/splash';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -32,7 +33,8 @@ export const firebaseConfig = {
     ProfilePage,
     LoginPage,
     SignupPage,
-    ForgotPage
+    ForgotPage,
+    SplashPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ export const firebaseConfig = {
     ProfilePage,
     LoginPage,
     SignupPage,
-    ForgotPage
+    ForgotPage,
+    SplashPage
   ],
   providers: [
     StatusBar,

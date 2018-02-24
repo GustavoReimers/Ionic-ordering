@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
 /*
   Generated class for the FiremanageProvider provider.
 
@@ -12,7 +13,7 @@ export class FiremanageProvider {
   uuid: "";
   profile: any;
   products: any;
-  constructor() {
+  constructor(public afAuth:AngularFireAuth) {
     console.log('Hello FiremanageProvider Provider');
     this.profile = {
       email: "",
@@ -66,5 +67,9 @@ export class FiremanageProvider {
   }
   doOrder(orderData) {
     this.db.ref('orders/' + this.uuid).push(orderData);
+  }
+  doLogout(){
+    this.afAuth.auth.signOut();
+    console.log(this.afAuth.auth.currentUser);
   }
 }
