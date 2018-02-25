@@ -18,7 +18,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public fireData: FiremanageProvider, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.orderDate = new Date().toISOString();
     this.showLoading("Loading Products");
-    var self = this;
+    var self = this;    
     this.fireData.getProducts().then(function (snapshot) {
       console.log("products", snapshot.val());
       self.temp = snapshot.val();
@@ -33,6 +33,7 @@ export class HomePage {
       self.products = [];
       self.products = arr;
       self.dismissLoading();
+      self.address = self.fireData.profile.address;
     });
 
     console.log(this.products);
