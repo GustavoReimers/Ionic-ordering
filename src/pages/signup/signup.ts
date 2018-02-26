@@ -34,6 +34,11 @@ export class SignupPage {
     this.navCtrl.pop();
   }
   async register() {
+    if(this.account.name == "" || this.account.address == "" )
+    {
+      this.showToast("You should fill the Name and Address fields.");
+      return;
+    }
     try {
       this.showLoading();
       const result = await this.afAuth.auth.createUserWithEmailAndPassword(

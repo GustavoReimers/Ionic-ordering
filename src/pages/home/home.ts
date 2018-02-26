@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController,AlertController } from 'ionic-angular';
 import { FiremanageProvider } from '../../providers/firemanage/firemanage';
 import { providerDef } from '@angular/core/src/view/provider';
 @Component({
@@ -15,7 +15,7 @@ export class HomePage {
   isOrder = false;
   loading: any;
   temp: any;
-  constructor(public navCtrl: NavController, public fireData: FiremanageProvider, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public fireData: FiremanageProvider,public atrCtrl: AlertController, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.orderDate = new Date().toISOString();
     this.showLoading("Loading Products");
     var self = this;    
@@ -79,6 +79,14 @@ export class HomePage {
     var self = this;
     setTimeout(() => {
       loading.dismiss();
+      
+        let alert = self.atrCtrl.create({
+          title: 'Order Success!',
+          subTitle: 'Products successfully ordered!',
+          buttons: ['OK']
+        });
+        alert.present();
+      
       self.totalPrice = 0;
       self.address = '';
       self.orderDate = new Date().toISOString();

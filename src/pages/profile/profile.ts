@@ -21,6 +21,10 @@ export class ProfilePage {
     this.profile = this.fireData.profile
   }
   saveProfile() {
+    if (this.profile.name == "" || this.profile.address == "" || this.profile.company == "") {
+      this.showToast("You should fill the Name, Company and Address fields.");
+      return;
+    }
     this.fireData.updateProfile(this.profile);
     this.showLoading();
   }
