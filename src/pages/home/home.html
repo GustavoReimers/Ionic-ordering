@@ -9,11 +9,13 @@
 
 <ion-content padding>
   <ion-list style="margin-bottom:2px">
-    <ion-item *ngFor="let item of products;let i = indes">
-      <ion-label class="item item-text-wrap" style="width:50%">{{item.name}}</ion-label>
-      <ion-label style="width:20%">{{item.price}}</ion-label>
-      <ion-input type="number" style="width:30%" [(ngModel)]="item.qty" placeholder="Qty" (ionChange)='calcTotal()'></ion-input>
-    </ion-item>
+    <div class="row" style="border-bottom:1px grey solid" *ngFor="let item of products;let i = indes">
+      <p class="item item-text-wrap" style="width:50%;padding-right:10px">{{item.name}}</p>
+      <div class="row" style="width:50%;vertical-align:middle;align-items:center">
+        <ion-label style="width:40%">{{item.price}}</ion-label>
+        <ion-input type="number" style="width:60%" [(ngModel)]="item.qty" placeholder="Qty" (ionChange)='calcTotal()'></ion-input>
+      </div>
+    </div>
   </ion-list>
   <ion-item>
     <ion-label style="font-weight:bold;width:60%">Total Price:</ion-label>
