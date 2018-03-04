@@ -10,11 +10,11 @@
 <ion-content padding style="background-color:#ffe083">
   <form (ngSubmit)="saveProfile()">
     <ion-row>
-      <span class="tx">Name:</span>
+      <span class="tx">Name*:</span>
       <ion-input required class="inp" type="text" placeholder="Name" [(ngModel)]="profile.name" name="name"></ion-input>
     </ion-row>
     <ion-row>
-      <span class="tx">Email:</span>
+      <span class="tx">Email*:</span>
       <ion-input class="inp" type="email" placeholder="Email" disabled="true" [(ngModel)]="profile.email" name="email"></ion-input>
     </ion-row>
     <ion-row>

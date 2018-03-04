@@ -24,12 +24,12 @@
   <br>
   <br>
   <ion-item>
-    <ion-label>Address:</ion-label>
-    <ion-input type="text" placeholder="Input Address" [(ngModel)]="address" value="address" (ionChange)='calcTotal()'></ion-input>
+    <ion-label>Delivery Address:</ion-label>
+    <ion-input type="text" placeholder="Delivery Address" [(ngModel)]="address" value="address" (ionChange)='calcTotal()'></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>OrderDate:</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" min="2016" max="2020-10-31" [(ngModel)]="orderDate"></ion-datetime>
+    <ion-label>Delivery Date:</ion-label>
+    <ion-datetime displayFormat="MMM DD, YYYY (DDD)" min="2018" max="2020-10-31" [(ngModel)]="orderDate"></ion-datetime>
   </ion-item>
   <div padding>
     <button [disabled]="!isOrder" ion-button class="signup gradient-bg" block (click)="doOrder()">Place Order</button>

@@ -30,6 +30,7 @@ export class HomePage {
           qty: 0
         });
       }
+      self.totalPrice = 0.0;
       self.products = [];
       self.products = arr;
       self.dismissLoading();
@@ -44,14 +45,14 @@ export class HomePage {
       tempPrice += this.products[i].price * this.products[i].qty;
     }
     this.totalPrice = tempPrice.toFixed(2);
-    if (this.totalPrice != 0 && this.address != '') {
+    if (this.address != '' && this.totalPrice > 0) {
       this.isOrder = true;
     } else {
       this.isOrder = false;
     }
   }
   doOrder() {
-    if (this.address != "" && this.totalPrice != 0) {
+    if (this.address != "" && this.totalPrice > 0) {
       var tempOrder = [];
       for (var i = 0; i < this.products.length; i++) {
         if (this.products[i].qty != 0) {
@@ -61,7 +62,9 @@ export class HomePage {
         }
       }
       var orderData = {
-        created_at: this.orderDate,
+        created_at: new Date().toISOString(),
+        delivery_date: this.orderDate,
+        address: this.address,
         total: this.totalPrice,
         email: this.fireData.profile.email,
         products: tempOrder
