@@ -9,6 +9,9 @@ import { ProfilePage } from '../pages/profile/profile';
 import { SignupPage } from '../pages/signup/signup';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { SplashPage } from '../pages/splash/splash';
+import { DateinfoPage } from '../pages/dateinfo/dateinfo';
+import { OrderlistPage } from '../pages/orderlist/orderlist';
+import { OrderdonePage } from '../pages/orderdone/orderdone';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +19,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FiremanageProvider } from '../providers/firemanage/firemanage';
+import { DatePicker } from '@ionic-native/date-picker';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyD5S7lfdx1iZFm9oHJqke3--fCxqYamBE8",
@@ -34,7 +38,10 @@ export const firebaseConfig = {
     LoginPage,
     SignupPage,
     ForgotPage,
-    SplashPage
+    SplashPage,
+    DateinfoPage,
+    OrderlistPage,
+    OrderdonePage 
   ],
   imports: [
     BrowserModule,
@@ -51,13 +58,17 @@ export const firebaseConfig = {
     LoginPage,
     SignupPage,
     ForgotPage,
-    SplashPage
+    SplashPage,
+    DateinfoPage,
+    OrderlistPage,
+    OrderdonePage 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     FiremanageProvider,
+    DatePicker
   ]
 })
 export class AppModule { }

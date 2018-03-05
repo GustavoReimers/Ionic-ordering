@@ -1,0 +1,128 @@
+page-noti-modal {
+  .notimodal {
+    padding: 5px;
+    padding-top: 100px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  h1 {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  }
+  .detailDiv {
+    margin: 100px 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(rgb(216, 247, 133), rgb(191, 117, 252));
+    box-shadow: 3px 3px 10px 0px rgb(255, 255, 255), -3px 3px 20px 0 rgb(255, 255, 255);
+  }
+  .scroll-content {
+    padding: 0px!important;
+  }
+  .demoInfo {
+    width: 100%;
+    height: 50px;
+    padding: 8px
+  }
+  .demoInfoIgnore {
+    width: 100%;
+    height: 50px;
+    padding: 8px;
+    background: #ccc;
+  }
+  .info {
+    width: 90%;
+    float: left;
+  }
+  .detailspan {
+    font-size: 20px;
+  }
+  .detailtitle {
+    width: 100%;
+  }
+  .detailleft {
+    width: 20%;
+    display: inline-block;
+  }
+  .detailrightname {
+    width: 80%;
+    float: right;
+    display: inline-block;
+    white-space: initial;
+  }
+  .detailrightaddress {
+    width: 80%;
+    float: right;
+    display: inline-block;
+    white-space: initial;
+    font-size: 16px;
+    color: #44f
+  }
+  .detailphone {
+    width: 100%;
+    font-size: 18px;
+  }
+  .specnote {
+    font-size: 14px;
+    white-space: initial;
+    padding-left: 20%;
+  }
+  .detailbtn {
+    font-size: 22px;
+  }
+  .button {
+    width: 46%;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    margin: 2%;
+    -webkit-transition-duration: 0.4s;
+    /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    z-index: 99999999999!important;
+    text-transform: capitalize;
+  }
+  .acceptbtn {
+    background-color: #4CAF50;
+    color: black;
+    border: 2px solid white;
+  }
+  .acceptbtn:hover {
+    background-color: #fff;
+    color: #4CAF50;
+  }
+  .ignorebtn {
+    background-color: #f44336;
+    color: black;
+    border: 2px solid black;
+  }
+  .ignorebtn:hover {
+    background-color: white;
+    color: #f44336;
+  }
+  .pickbtn {
+    width: 80%;
+    margin: 2% 10%;
+    background-color: #4CAF50;
+    color: black;
+    border: 2px solid white;
+  }
+  .pickbtn:hover {
+    background-color: #fff;
+    color: #4CAF50;
+  }
+  .deliverbtn {
+    width: 80%;
+    margin: 2% 10%;
+    background-color: rgb(66, 118, 216);
+    color: black;
+    border: 2px solid white;
+  }
+}

@@ -51,7 +51,7 @@ export class FiremanageProvider {
   }
   getProducts() {
     var self = this;
-    return this.db.ref('products/').once('value');
+    return this.db.ref('products/').orderByKey().once('value');
   }
   updateProfile(newPorfile) {
     this.profile = newPorfile;

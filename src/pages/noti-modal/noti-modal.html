@@ -1,0 +1,75 @@
+<!--
+  Generated template for the NotiModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content class="notimodal">
+  <div class="detailDiv">
+    <div style="text-align:center"><h1>New Order</h1></div>
+    <div class="detailspan">
+      <div class="detailtitle">
+        <div class="detailleft">From : </div>
+        <div class="detailrightname">{{order.from.name}}</div>
+      </div>
+      <div class="detailtitle">
+        <div class="detailleft"></div>
+        <div class="detailrightaddress">
+          <u>{{order.from.address.stree}} {{order.from.address.city}} {{order.from.address.state}} {{order.from.address.zipcode}}
+          </u>
+        </div>
+      </div>
+      <div class="detailphone">
+        <div class="detailleft">Phone : </div>
+        <div class="detailrightname">{{order.from.phone}}</div>
+      </div>
+      <div style="width:100%;height:1px;background:#555"></div>
+      <div class="detailtitle">
+        <div class="detailleft">To : </div>
+        <div class="detailrightname">{{order.to.name}}</div>
+      </div>
+      <div class="detailtitle">
+        <div class="detailleft"></div>
+        <div class="detailrightaddress">
+          <u>{{order.to.address.stree}} {{order.to.address.city}} {{order.to.address.state}} {{order.to.address.zipcode}}
+          </u>
+        </div>
+      </div>
+      <div class="detailphone">
+        <div class="detailleft">Phone : </div>
+        <div class="detailrightname">{{order.to.phone}}</div>
+      </div>
+      <div class="specnote">{{order.to.specialNote}}</div>
+    </div>
+
+    <div *ngIf="order.status == 'RECEIVED'">
+      <button ion-button class="button acceptbtn" (tap)="takeOrder()">
+        Take Order &nbsp;
+        <ion-icon class="detailbtn" name="md-checkmark"></ion-icon>
+      </button>
+      <button ion-button class="button ignorebtn" style="float:right" (tap)="ignoreOrder()">
+        Skip &nbsp;
+        <ion-icon class="detailbtn" name="md-close"></ion-icon>
+      </button>
+    </div>
+    <div *ngIf="order.status == 'TAKEN'">
+      <button ion-button class="button pickbtn" (tap)="pickOrder()">
+        Pick Order &nbsp;
+        <ion-icon class="detailbtn" name="md-arrow-round-up"></ion-icon>
+      </button>
+    </div>
+    <div *ngIf="order.status == 'PICKED_UP'">
+      <button ion-button class="button pickbtn" (tap)="deliverOrder()">
+        Delivered &nbsp;
+        <ion-icon class="detailbtn" name="md-checkmark-circle"></ion-icon>
+      </button>
+    </div>
+    <div *ngIf="order.status == 'DELIVERED'">
+      <button ion-button class="button deliverbtn">
+        Completed &nbsp;
+        <ion-icon class="detailbtn" name="md-medal"></ion-icon>
+      </button>
+    </div>
+  </div>
+</ion-content>

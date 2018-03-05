@@ -7,31 +7,41 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list style="margin-bottom:2px">
-    <div class="row" style="border-bottom:1px grey solid" *ngFor="let item of products;let i = indes">
-      <p class="item item-text-wrap" style="width:50%;padding-right:10px">{{item.name}}</p>
-      <div class="row" style="width:50%;vertical-align:middle;align-items:center">
-        <ion-label style="width:40%">{{item.price}}</ion-label>
-        <ion-input type="number" style="width:60%" [(ngModel)]="item.qty" placeholder="Qty" (ionChange)='calcTotal()'></ion-input>
+<ion-content>
+  <ion-list style="margin-bottom:2px;padding-left:10px;padding-right:10px;padding-top:20px">
+    <div class="row" style="padding-left:5px" *ngFor="let item of products;let i = index">
+      <div class="col" *ngIf="item.letter!=''">
+        <span style="font-size:22px;font-weight:bold;vertical-align:middle;color:#555">{{item.letter}}</span>
+        <span style="vertical-align:middle;width:90%;height:1px;display:inline-block;background:#555"></span>
+      </div>
+      <div class="row" style="padding-left:15px;width:100%">
+        <p class="item item-text-wrap" style="width:100%;margin:0px;padding-right:10px;font-size:22px;color:#555">{{item.name}}</p>
+        <div class="row" style="width:100%;vertical-align:middle;align-items:center">
+          <ion-label style="width:60%;font-size:20px;color:#555">${{item.price}}</ion-label>
+          <img src="../assets/img/add.png" width="30px" height="30px" style="margin-left:20px" (tap)="plusProduct(i)"/>
+          <img src="../assets/img/min.png" width="30px" height="30px" style="margin-left:20px" (tap)="minusProduct(i)" />
+          <ion-input type="number" style="width:60%;color:#555;font-size:20px;font-weight:bold" [(ngModel)]="item.qty" placeholder="Qty"
+            (ionChange)='calcTotal()'></ion-input>
+        </div>
       </div>
     </div>
   </ion-list>
-  <ion-item>
-    <ion-label style="font-weight:bold;width:60%">Total Price:</ion-label>
-    <ion-label style="width:20%">{{totalPrice}}</ion-label>
-  </ion-item>
+  <hr>
+  <!-- <div style="padding-left:20px;padding-right:20px">
+    <ion-item>
+      <ion-label>Delivery Address:</ion-label>
+      <ion-input type="text" placeholder="Delivery Address" [(ngModel)]="address" value="address" (ionChange)='calcTotal()'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Delivery Date:</ion-label>
+      <ion-datetime displayFormat="MMM DD, YYYY (DDD)" min="2018" max="2020-10-31" [(ngModel)]="orderDate"></ion-datetime>
+    </ion-item>
+  </div> -->
   <br>
   <br>
-  <ion-item>
-    <ion-label>Delivery Address:</ion-label>
-    <ion-input type="text" placeholder="Delivery Address" [(ngModel)]="address" value="address" (ionChange)='calcTotal()'></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Delivery Date:</ion-label>
-    <ion-datetime displayFormat="MMM DD, YYYY (DDD)" min="2018" max="2020-10-31" [(ngModel)]="orderDate"></ion-datetime>
-  </ion-item>
-  <div padding>
-    <button [disabled]="!isOrder" ion-button class="signup gradient-bg" block (click)="doOrder()">Place Order</button>
-  </div>
+  <br>
 </ion-content>
+<div class="home_bottom">
+  <div style="padding-top:10px;width:50%;height:50px;float:left;font-size:22px;font-weight:bold;">${{totalPrice}}</div>
+  <button [disabled]="!isOrder" style="width:50%" style="float:right" ion-button (click)="doOrder()">Place Order</button>
+</div>
