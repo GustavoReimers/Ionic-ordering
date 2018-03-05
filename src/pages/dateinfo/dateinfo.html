@@ -13,18 +13,18 @@
 <ion-content padding>
   <br>
   <div>
-    <span style="font-size:18px;">Delivery Address:</span>
-    <input type="text" style="border:none;font-size:18px;width:180px;float:right" placeholder="Delivery Address" [(ngModel)]="address" value="address"/>
+    <span style="font-size:18px;font-weight:bold;">Delivery Address:</span><br>
+    <input type="text" style="border:none;width:100%;font-size:18px;margin:5px 0 10px 0;" placeholder="Delivery Address" [(ngModel)]="address" value="address"/>
   </div>
   <hr>
-  <div>
-    <span style="font-size:18px;">Delivery Date:</span>
-    <select style="border:none;width:180px;font-size:18px;float:right" [(ngModel)]="orderDate" value="orderDate">
+  <div style="margin-top:15px;">
+    <span style="font-size:18px;font-weight:bold;">Delivery Date:</span><br>
+    <select style="border:none;font-size:18px;width:100%;margin:5px 0 8px 0;" [(ngModel)]="orderDate" value="orderDate">
       <option *ngFor="let day of availableDays" [value]="day">{{day}}</option>
     </select>
   </div>
 </ion-content>
 <div class="home_bottom">
-  <button style="width:50%" style="float:left" ion-button (click)="goback()">Back</button>
+  <button style="width:50%" style="float:left" ion-button class="grey-btn" color="dark" (click)="goback()">Back</button>
   <button [disabled]="address==''" style="width:50%" style="float:right" ion-button (click)="gotoOrder()">Next</button>
 </div>
