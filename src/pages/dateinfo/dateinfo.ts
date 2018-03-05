@@ -29,21 +29,23 @@ export class DateinfoPage {
     "Saturday",
   ];
   constructor(public navCtrl: NavController, public navParams: NavParams, private datePicker: DatePicker) {
+    var someDate = new Date();
+
     this.orderData = navParams.get("data");
     this.address = this.orderData.address;
     this.orderDate = new Date();
-    this.orderDate = this.weeks[this.orderDate.getDay()] + "(" + this.orderDate.toLocaleDateString()+ ")";
-
+    this.orderDate.setDate(someDate.getDate() + 1);
+    this.orderDate = this.weeks[this.orderDate.getDay()] + " (" + this.orderDate.toLocaleDateString('en-AU')+ ")";
     this.today = new Date().toISOString();
-
-    var someDate = new Date();
-    for (var i = 0; i < 7; i++) {
+    
+    someDate = new Date();
+    for (var i = 1; i <= 7; i++) {
       var tempdate = new Date();
       tempdate.setDate(someDate.getDate() + i);
-      if (tempdate.getDay() == 0) {
+      if (tempdate.getDay() == 0 || tempdate.getTime() == someDate.getTime()) {
 
       } else {      
-        this.availableDays.push(this.weeks[tempdate.getDay()] + "(" + tempdate.toLocaleDateString()+ ")");
+        this.availableDays.push(this.weeks[tempdate.getDay()] + " (" + tempdate.toLocaleDateString('en-AU')+ ")");
       }
     }
     console.log(this.availableDays);
