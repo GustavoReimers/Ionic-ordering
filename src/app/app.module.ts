@@ -20,7 +20,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FiremanageProvider } from '../providers/firemanage/firemanage';
 import { DatePicker } from '@ionic-native/date-picker';
-
+import { HTTP } from '@ionic-native/http';
 export const firebaseConfig = {
   apiKey: "AIzaSyD5S7lfdx1iZFm9oHJqke3--fCxqYamBE8",
   authDomain: "wholesale-app-d5f71.firebaseapp.com",
@@ -68,7 +68,8 @@ export const firebaseConfig = {
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     FiremanageProvider,
-    DatePicker
+    DatePicker,
+    HTTP
   ]
 })
 export class AppModule { }

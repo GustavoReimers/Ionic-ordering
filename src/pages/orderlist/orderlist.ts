@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FiremanageProvider } from '../../providers/firemanage/firemanage';
 import { OrderdonePage } from '../orderdone/orderdone';
+
 /**
  * Generated class for the OrderlistPage page.
  *
@@ -20,7 +21,7 @@ export class OrderlistPage {
   totalPrice = 0.0;
   orderData: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public fireData: FiremanageProvider,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fireData: FiremanageProvider, 
     public atrCtrl: AlertController, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.orderData = navParams.get("data");
     console.log(this.orderData);
@@ -36,10 +37,10 @@ export class OrderlistPage {
   }
   doOrder() {
     this.fireData.doOrder(this.orderData);
-    this.ordering();
+    this.ordering();    
   }
 
-  ordering() {    
+  ordering() {
     let loading = this.loadingCtrl.create({
       content: 'Saving Order...'
     });

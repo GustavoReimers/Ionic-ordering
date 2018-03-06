@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { HTTP } from '@ionic-native/http';
 /*
   Generated class for the FiremanageProvider provider.
 
@@ -13,7 +14,7 @@ export class FiremanageProvider {
   uuid: "";
   profile: any;
   products: any;
-  constructor(public afAuth:AngularFireAuth) {
+  constructor(public afAuth:AngularFireAuth,private http: HTTP,) {
     console.log('Hello FiremanageProvider Provider');
     this.profile = {
       email: "",
@@ -65,8 +66,24 @@ export class FiremanageProvider {
       self.profile = snapshot.val();
     });
   }
-  doOrder(orderData) {
-    this.db.ref('orders/' + this.uuid).push(orderData);
+  doOrder(orderData) {   
+    let key = this.db.ref('orders/' + this.uuid).push(orderData).key;
+    console.log("key",key);
+    this.http.get("http://app.fruitbrothers.com.au/server/index.php", {
+      "order_id": key,
+      "user_id": this.uuid,
+      "email_address": this.profile.email
+    }, {})
+      .then(data => {
+        console.log("Request",data.status);
+        console.log("Request",data.data); // data received by server
+        console.log("Request",data.headers);
+      })
+      .catch(error => {
+        console.log("Request",error.status);
+        console.log("Request",error.error); // error message as string
+        console.log("Request",error.headers);
+      });
   }
   doLogout(){
     this.afAuth.auth.signOut();
