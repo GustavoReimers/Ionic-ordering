@@ -69,7 +69,7 @@ export class FiremanageProvider {
   doOrder(orderData) {   
     let key = this.db.ref('orders/' + this.uuid).push(orderData).key;
     console.log("key",key);
-    this.http.get("http://app.fruitbrothers.com.au/server/index.php", {
+    this.http.post("http://fruitbrothers.hivisgroup.org/", {
       "order_id": key,
       "user_id": this.uuid,
       "email_address": this.profile.email
