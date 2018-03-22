@@ -21,6 +21,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FiremanageProvider } from '../providers/firemanage/firemanage';
 import { DatePicker } from '@ionic-native/date-picker';
 import { HTTP } from '@ionic-native/http';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { RestProvider } from '../providers/rest/rest';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyD5S7lfdx1iZFm9oHJqke3--fCxqYamBE8",
   authDomain: "wholesale-app-d5f71.firebaseapp.com",
@@ -45,6 +49,8 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
@@ -69,7 +75,8 @@ export const firebaseConfig = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     FiremanageProvider,
     DatePicker,
-    HTTP
+    HTTP,
+    RestProvider
   ]
 })
 export class AppModule { }

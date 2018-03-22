@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, AlertController } from 'ionic-angular';
 import { FiremanageProvider } from '../../providers/firemanage/firemanage';
+import { RestProvider } from '../../providers/rest/rest';
 import { providerDef } from '@angular/core/src/view/provider';
 import { ModalController } from 'ionic-angular';
 import { NgZone } from "@angular/core";
@@ -20,12 +21,19 @@ export class HomePage {
   isOrder = false;
   loading: any;
   temp: any;
+  temp2: any;
   mLetter = "";
+  mLetter2 = "";
+  products2 = [];
+
   constructor(public navCtrl: NavController, public fireData: FiremanageProvider,public modalCtrl: ModalController,
-    public ngZone: NgZone, public atrCtrl: AlertController, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
+    public ngZone: NgZone, public atrCtrl: AlertController, public toastCtrl: ToastController,
+    public loadingCtrl: LoadingController, public restProvider: RestProvider) {
+
     this.orderDate = new Date().toISOString();
     this.showLoading("Loading Products");
     var self = this;
+    this.getProducts2();
     this.fireData.getProducts().then(function (snapshot) {
 
       self.temp = snapshot.val();
@@ -60,6 +68,44 @@ export class HomePage {
 
     console.log(this.products);
   }
+
+  getProducts2() {
+    this.restProvider.getProducts()
+      .then(data => {
+        //this.products2 = data;
+        console.log("Products 2", data);
+
+        var self = this;
+        self.temp2 = data;
+        var arr = [];
+
+        for (var x in self.temp2) {
+          if (self.temp2[x].name[0].toUpperCase() == self.mLetter2.toUpperCase()) {
+            arr.push({
+              letter: "",
+              name: self.temp2[x].name,
+              price: 1,
+              qty: 0
+            });
+          }
+          else {
+            self.mLetter2 = self.temp2[x].name[0].toUpperCase();
+            arr.push({
+              letter: self.mLetter2,
+              name: self.temp2[x].name,
+              price: 1,
+              qty: 0
+            });
+          }
+        }
+
+        self.totalPrice = 0.0;
+        self.products2 = [];
+        self.products2 = arr;
+        console.log("List 2", self.products2);
+      });
+  }
+
   plusProduct(nIndex) {
     // if(this.products[nIndex].qty > 0)
     {
